@@ -1,4 +1,4 @@
-# European-Airline-Routes-Analytics
+# European Airline Routes Big Data Analytics
 
 This repository contains my complete end-to-end Big Data project built on **Databricks**, using a real-world style **European air routes dataset**.  
 The workflow demonstrates the core components of a modern data pipeline built using Databricks and Delta Lake. 
