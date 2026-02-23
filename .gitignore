@@ -1,0 +1,13 @@
+# macOS files
+.DS_Store
+__MACOSX/
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment files
+.env
