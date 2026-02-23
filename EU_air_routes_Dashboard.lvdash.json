@@ -1,0 +1,420 @@
+{
+  "datasets": [
+    {
+      "name": "d1cd5982",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "\n",
+        "SELECT\n",
+        "  departure_country,\n",
+        "  SUM(flights_per_week) AS total_flights_per_week,\n",
+        "  AVG(distance_km)      AS avg_distance_km\n",
+        "FROM workspace.eu_air_routes.eu_air_routes_clean\n",
+        "GROUP BY departure_country\n",
+        "ORDER BY total_flights_per_week DESC;\n"
+      ]
+    },
+    {
+      "name": "aed5a9cf",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "\n",
+        "SELECT\n",
+        "  departure_country,\n",
+        "  SUM(flights_per_week) AS total_flights_per_week,\n",
+        "  AVG(distance_km)      AS avg_distance_km\n",
+        "FROM workspace.eu_air_routes.eu_air_routes_clean\n",
+        "GROUP BY departure_country\n",
+        "ORDER BY total_flights_per_week DESC;\n"
+      ]
+    },
+    {
+      "name": "c5222cca",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "\n",
+        "SELECT\n",
+        "  ROUND(distance_km, -1) AS distance_bucket_km,\n",
+        "  COUNT(*)               AS route_count,\n",
+        "  AVG(price)             AS avg_price,\n",
+        "  AVG(price_per_km)      AS avg_price_per_km\n",
+        "FROM workspace.eu_air_routes.eu_air_routes_clean\n",
+        "WHERE distance_km IS NOT NULL\n",
+        "GROUP BY ROUND(distance_km, -1)\n",
+        "ORDER BY distance_bucket_km;\n"
+      ]
+    },
+    {
+      "name": "b49853b6",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "\n",
+        "SELECT\n",
+        "  ROUND(distance_km, -1) AS distance_bucket_km,\n",
+        "  COUNT(*)               AS route_count,\n",
+        "  AVG(price)             AS avg_price,\n",
+        "  AVG(price_per_km)      AS avg_price_per_km\n",
+        "FROM workspace.eu_air_routes.eu_air_routes_clean\n",
+        "WHERE distance_km IS NOT NULL\n",
+        "GROUP BY ROUND(distance_km, -1)\n",
+        "ORDER BY distance_bucket_km;\n"
+      ]
+    },
+    {
+      "name": "c166b033",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "\n",
+        "SELECT\n",
+        "  ROUND(distance_km, -1) AS distance_bucket_km,\n",
+        "  COUNT(*)               AS route_count,\n",
+        "  AVG(price)             AS avg_price,\n",
+        "  AVG(price_per_km)      AS avg_price_per_km\n",
+        "FROM workspace.eu_air_routes.eu_air_routes_clean\n",
+        "WHERE distance_km IS NOT NULL\n",
+        "GROUP BY ROUND(distance_km, -1)\n",
+        "ORDER BY distance_bucket_km;\n"
+      ]
+    },
+    {
+      "name": "74b27f25",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "\n",
+        "SELECT\n",
+        "  iata_from,\n",
+        "  iata_to,\n",
+        "  departure_city,\n",
+        "  arrival_airport_city_name_en AS arrival_city,\n",
+        "  flights_per_week,\n",
+        "  distance_km,\n",
+        "  price\n",
+        "FROM workspace.eu_air_routes.eu_air_routes_clean\n",
+        "ORDER BY flights_per_week DESC\n",
+        "LIMIT 15;\n"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "b56bdb30",
+      "displayName": "Visuals",
+      "layout": [
+        {
+          "widget": {
+            "name": "fbee9531",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "d1cd5982",
+                  "fields": [
+                    {
+                      "name": "departure_country",
+                      "expression": "`departure_country`"
+                    },
+                    {
+                      "name": "sum(total_flights_per_week)",
+                      "expression": "SUM(`total_flights_per_week`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "departure_country",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_flights_per_week)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Total Flight Volume by Departure Country",
+                "showTitle": true
+              },
+              "mark": {
+                "layout": "group"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "01af9ecc",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "c5222cca",
+                  "fields": [
+                    {
+                      "name": "distance_bucket_km",
+                      "expression": "`distance_bucket_km`"
+                    },
+                    {
+                      "name": "sum(avg_price)",
+                      "expression": "SUM(`avg_price`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "distance_bucket_km",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(avg_price)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Price vs Distance Bucket",
+                "showTitle": true
+              },
+              "mark": {
+                "layout": "layer"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "36a31684",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "74b27f25",
+                  "fields": [
+                    {
+                      "name": "departure_city",
+                      "expression": "`departure_city`"
+                    },
+                    {
+                      "name": "sum(flights_per_week)",
+                      "expression": "SUM(`flights_per_week`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "departure_city",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(flights_per_week)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "title": "Top 15 Busiest European Air Routes (By Weekly Flights)",
+                "showTitle": true
+              },
+              "mark": {
+                "layout": "group"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 6,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "529a6dfe",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "0ecc32bf",
+            "queries": [
+              {
+                "name": "dashboards/01f0d410892111a3b6d5aa3ba2db8072/datasets/01f0d410b5741224b09fdde5d5d64253_departure_country",
+                "query": {
+                  "datasetName": "d1cd5982",
+                  "fields": [
+                    {
+                      "name": "departure_country",
+                      "expression": "`departure_country`"
+                    },
+                    {
+                      "name": "departure_country_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "departure_country",
+                    "queryName": "dashboards/01f0d410892111a3b6d5aa3ba2db8072/datasets/01f0d410b5741224b09fdde5d5d64253_departure_country"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "f850a959",
+            "queries": [
+              {
+                "name": "dashboards/01f0d410892111a3b6d5aa3ba2db8072/datasets/01f0d411423e1e4584dfa859b3a31d28_departure_city",
+                "query": {
+                  "datasetName": "74b27f25",
+                  "fields": [
+                    {
+                      "name": "departure_city",
+                      "expression": "`departure_city`"
+                    },
+                    {
+                      "name": "departure_city_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "departure_city",
+                    "queryName": "dashboards/01f0d410892111a3b6d5aa3ba2db8072/datasets/01f0d411423e1e4584dfa859b3a31d28_departure_city"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "e0547245",
+            "queries": [
+              {
+                "name": "dashboards/01f0d410892111a3b6d5aa3ba2db8072/datasets/01f0d411423e1e4584dfa859b3a31d28_iata_from",
+                "query": {
+                  "datasetName": "74b27f25",
+                  "fields": [
+                    {
+                      "name": "iata_from",
+                      "expression": "`iata_from`"
+                    },
+                    {
+                      "name": "iata_from_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "iata_from",
+                    "queryName": "dashboards/01f0d410892111a3b6d5aa3ba2db8072/datasets/01f0d411423e1e4584dfa859b3a31d28_iata_from"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
