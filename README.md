@@ -29,7 +29,7 @@ This project answers:
 
 ## Architecture
 
-![European Airline Routes Analytics Architecture](screenshots/eu-air-routes-architecture.png)
+![European Airline Routes Lakehouse Pipeline](screenshots/eu-air-routes-architecture.png)
 
 The deployed workflow ingests the route CSV into a Unity Catalog volume, materializes raw and cleaned Delta tables, and serves the curated data to SQL analytics, machine learning, and a Databricks AI/BI dashboard.
 
